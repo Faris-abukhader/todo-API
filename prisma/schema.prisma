@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["debian-openssl-1.1.x", "darwin"]
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model Todo {
+  id         String   @id @default(cuid())
+  content    String @db.Text
+  priority   Int
+  isDone     Boolean
+  createdAt  DateTime @default(now())
+  lastUpdate DateTime @updatedAt
+  @@index([id])
+}
