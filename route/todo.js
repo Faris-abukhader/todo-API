@@ -21,7 +21,6 @@ const itemRoutes = async(fastify, options, done)=> {
 
     fastify.get('/:id',getOneTodoSchema)
 
-
 }
 
 module.exports = itemRoutes

@@ -1,13 +1,22 @@
 const Fastify = require('fastify')
 const PORT = process.env.PORT || 4500
-const fastify = Fastify({
-  logger: true
-})
+const fastify = Fastify({logger: true})
+const { docOptions } = require('./util/docGeneratorOptions')
 
 
-fastify.get('/', async (request, reply) => {
-  return { hello: 'world' }
-})
+const buildUpDocs = async (options) => {
+  await fastify.register(require('@fastify/swagger'), options)
+}
+try{
+  buildUpDocs(docOptions)
+}catch(err){
+  console.log(err)
+}
+
+fastify.register(require('@fastify/cors',{
+  origin:'*'
+}))
+
 
 // routes . . . 
 fastify.register(require('./route/todo'),{ prefix: '/todo' })

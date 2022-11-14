@@ -21,6 +21,7 @@ const todoObj = {
 
 const createOneTodoSchema = {
     schema: {
+      tags:['todo'],
         body: {
           type: 'object',
           required: ['content','priority','isDone'],
@@ -37,6 +38,7 @@ const createOneTodoSchema = {
 
 const updateOneTodoSchema = {
     schema: {
+      tags:['todo'],
       params:{
         type: 'object',
         required:['id'],
@@ -61,6 +63,7 @@ const updateOneTodoSchema = {
 
 const deleteOneTodoSchema = {
   schema: {
+    tags:['todo'],
     params:{
       type: 'object',
       required:['id'],
@@ -75,6 +78,7 @@ const deleteOneTodoSchema = {
 
 const deleteManyTodoSchema = {
   schema: {
+    tags:['todo'],
     body:{
       type:'object',
       properties:{
@@ -92,6 +96,7 @@ const deleteManyTodoSchema = {
 
 const getOneTodoSchema = {
   schema: {
+    tags:['todo'],
     params:{
       type: 'object',
       required:['id'],
@@ -109,6 +114,7 @@ const getOneTodoSchema = {
 
 const getAllTodoSchema = {
   schema: {
+    tags:['todo'],
     response:{
       200:{
         type:'array',
@@ -123,6 +129,7 @@ const getAllTodoSchema = {
  
 
 module.exports = {
+    todoObj,
     createOneTodoSchema,
     updateOneTodoSchema,
     deleteOneTodoSchema,
